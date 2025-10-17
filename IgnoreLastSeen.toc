@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Ignore Last Seen
+## Notes: Tracks approximate last online time for ignored players via periodic /who queries.
+## SavedVariables: IgnoreLastSeenDB
+## Author: egovir
+
+IgnoreLastSeen.lua
