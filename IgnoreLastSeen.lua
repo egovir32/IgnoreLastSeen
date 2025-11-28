@@ -13,7 +13,9 @@ frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("IGNORELIST_UPDATE")
 frame:RegisterEvent("WHO_LIST_UPDATE")
 
-local function FormatTimeDiff(lastSeen)
+local FormatTimeDiff, UpdateIgnoreList, RemovePlayer, UpdateGUI, ShowGUI
+
+FormatTimeDiff = function(lastSeen)
     if lastSeen == 0 then
         return "Never seen online"
     end
@@ -25,7 +27,7 @@ local function FormatTimeDiff(lastSeen)
     return string.format("%dd %dh %dm %ds ago", days, hours, minutes, seconds)
 end
 
-local function UpdateIgnoreList()
+UpdateIgnoreList = function()
     wipe(queryQueue)
     for i = 1, GetNumIgnores() do
         local name = GetIgnoreName(i)
@@ -41,12 +43,12 @@ local function UpdateIgnoreList()
     end
 end
 
-local function RemovePlayer(name)
+RemovePlayer = function(name)
     DelIgnore(name)  -- Use DelIgnore for WoW 3.3.5
     UpdateIgnoreList()
 end
 
-local function UpdateGUI()
+UpdateGUI = function()
     if not guiFrame then return end
     
     -- Clear existing rows
@@ -99,7 +101,7 @@ local function UpdateGUI()
     scrollChild:SetSize(400, math.max(offset, 300))
 end
 
-local function ShowGUI()
+ShowGUI = function()
     if guiFrame then
         guiFrame:Show()
         UpdateGUI()
@@ -193,4 +195,5 @@ SlashCmdList["IGNORELASTSEEN"] = function(msg)
     else
         ShowGUI()
     end
+
 end
