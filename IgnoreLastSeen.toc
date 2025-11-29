@@ -1,0 +1,6 @@
+## Interface: 30300
+## Title: Ignore Last Seen 3.3.5
+## Author: egovir
+## Notes: Tracks last seen times for ignored players.
+## SavedVariables: IgnoreLastSeenDB, IgnoreLastSeenPrevNames, IgnoreLastSeenPrevTimesDB
+IgnoreLastSeen.lua
